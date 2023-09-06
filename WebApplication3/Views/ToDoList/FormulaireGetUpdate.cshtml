@@ -6,8 +6,7 @@
 
 <form asp-action="Update">
     <div class="mb-3">
-        <label for="@Html.DisplayNameFor((ToDoList a) => a.Id)" class="form-label">Titre</label>
-        <input type="text" class="form-control" asp-for="Id" aria-describedby="">
+        <input type="hidden" class="form-control" asp-for="Id" aria-describedby="">
         <label for="@Html.DisplayNameFor((ToDoList a) => a.Title)" class="form-label">Titre</label>
          <input type="text" class="form-control" asp-for="Title" aria-describedby="">
         <label for="@Html.DisplayNameFor((ToDoList a) => a.Description)" class="form-label">Description</label>
