@@ -1,0 +1,43 @@
+﻿@model List<ToDoList>;
+@{
+    ViewData["Title"] = "Home Page";    
+}
+<div class="container">
+    <h1>Les tableaux Bootstrap</h1>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameForInnerType((ToDoList c) => c.Id)</th>
+                <th>@Html.DisplayNameForInnerType((ToDoList c) => c.Title)</th>
+                <th>@Html.DisplayNameForInnerType((ToDoList c) => c.Description)</th>
+                <th>@Html.DisplayNameForInnerType((ToDoList c) => c.Finished)</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        @if(item.Finished == false)
+                        {
+                            <td><a asp-action="Change" asp-route-id="@item.Id" class="btn btn-primary">A faire</a></td>
+                        }
+                        else
+                        {
+                            <td><a asp-action="Change" asp-route-id="@item.Id" class="btn btn-success">Terminé</a></td>
+                        }
+                        @*<td><a asp-action="Change" asp-route-id="@item.Id" class="btn btn-@(item.Finished?"success":"primary")">A faire</a></td>*@
+
+                        @*<td><a asp-action="FormulaireGetUpdate" asp-route-id="@item.Id" class="btn btn-primary">Modifier</a></td>*@
+                        <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Supprimer</a></td>
+                    </tr>                 
+                }              
+               
+        </tbody>
+    </table>
+</div>
+
+
