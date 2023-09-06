@@ -60,13 +60,15 @@ namespace WebApplication3.Repositories
 
         public bool Update(ToDoList toDoList)
         {
-            var result = _db.ToDoLists.Find(toDoList.Id);
+            _db.Update(toDoList);
+            _db.SaveChanges();
+            return true;
+            //var result = _db.ToDoLists.Find(toDoList.Id);
            
-              toDoList.Id = result.Id;
-              result.Title = toDoList.Title;
-             result.Description = toDoList.Description;
-          
-            throw new NotImplementedException();
+            //  toDoList.Id = result.Id;
+            //  result.Title = toDoList.Title;
+            // result.Description = toDoList.Description;          
+           
         }
     }
 }

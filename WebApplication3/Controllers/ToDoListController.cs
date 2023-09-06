@@ -32,9 +32,14 @@ namespace WebApplication3.Controllers
             _repositoryToDoList.Create(toDoList);
             return RedirectToAction("Index");
         }
-        public IActionResult FormulaireGetUpdate()
+        public IActionResult FormulaireGetUpdate(int id)
         {
-            return View();
+            var toDo = _repositoryToDoList.GetById(id);
+
+            if (toDo == null)
+                return View("Error");
+
+            return View(toDo);            
         }
         public IActionResult Update(ToDoList toDoList)
         {
